@@ -1,0 +1,99 @@
+{
+  "name": "zigbee-adapter",
+  "display_name": "Zigbee",
+  "version": "0.10.1",
+  "description": "Zigbee adapter plugin for Mozilla WebThings Gateway",
+  "author": "Mozilla IoT",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "mozilla",
+    "iot",
+    "adapter",
+    "zigbee"
+  ],
+  "homepage": "https://github.com/mozilla-iot/zigbee-adapter",
+  "dependencies": {
+    "bl": "^4.0.0",
+    "buffer-reader": "^0.1.0",
+    "clone-deep": "^4.0.1",
+    "color": "^3.1.2",
+    "command-line-args": "^5.1.1",
+    "dissolve": "github:mozilla-iot/dissolve#moziot-changes",
+    "dissolve-chunks": "github:mozilla-iot/dissolve-chunks#moziot-changes",
+    "mkdirp": "^0.5.1",
+    "xbee-api": "^0.6.0",
+    "zcl-id": "github:dhylands/zcl-id#moziot-changes",
+    "zcl-packet": "github:dhylands/zcl-packet#moziot-changes"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.4.0",
+    "gateway-addon": "git+https://github.com/mozilla-iot/gateway-addon-node.git"
+  },
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mozilla-iot/zigbee-adapter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mozilla-iot/zigbee-adapter/issues"
+  },
+  "files": [
+    "LICENSE",
+    "SHA256SUMS",
+    "index.js",
+    "deconz-driver.js",
+    "manifest.json",
+    "xbee-driver.js",
+    "zb-adapter.js",
+    "zb-at.js",
+    "zb-classifier.js",
+    "zb-constants.js",
+    "zb-debug.js",
+    "zb-driver.js",
+    "zb-families.js",
+    "zb-family.js",
+    "zb-node.js",
+    "zb-property.js",
+    "zb-xiaomi.js",
+    "node_modules"
+  ],
+  "moziot": {
+    "api": {
+      "min": 2,
+      "max": 2
+    },
+    "enabled": true,
+    "plugin": true,
+    "exec": "{nodeLoader} {path}",
+    "config": {
+      "scanChannels": 8190,
+      "allowFTDISerial": false,
+      "debug": ""
+    },
+    "schema": {
+      "type": "object",
+      "required": [
+        "scanChannels",
+        "allowFTDISerial"
+      ],
+      "properties": {
+        "scanChannels": {
+          "type": "integer",
+          "default": 8190
+        },
+        "allowFTDISerial": {
+          "type": "boolean",
+          "default": false
+        },
+        "debug": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    }
+  }
+}

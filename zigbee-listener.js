@@ -4,7 +4,7 @@
 
 const commandLineArgs = require('command-line-args');
 const SerialProber = require('./serial-prober-node/serial-prober');
-const EventListener = require('./zb-event-listener')
+const HomieEventListener = require('./homie-event-listener')
 
 const PROBERS = [
   new SerialProber({
@@ -133,6 +133,7 @@ if (options.list) {
         // the file so that the debug config gets initialized before we
         // import the driver class.
         const XBeeDriver = require('./zigbee-adapter/xbee-driver');
+        //add deconz
         const driver = {
           [PROBERS[1].param.name]: XBeeDriver,
         };

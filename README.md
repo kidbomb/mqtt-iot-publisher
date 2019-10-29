@@ -1,5 +1,7 @@
 A multi protocol listener which publishes devices changes through MQTT
 
+Most code was taken originally from https://github.com/mozilla-iot
+
 # Currently implemented
 
 * Zigbee listener/published
@@ -11,7 +13,7 @@ A multi protocol listener which publishes devices changes through MQTT
 
 * Test
 
-You need to have a Digispark Xbee device
+You need to have a Digi Xbee device
 
 Start service with
 > node zigbee-listener.js

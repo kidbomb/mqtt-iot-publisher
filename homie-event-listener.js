@@ -52,22 +52,45 @@ class HomieEventListener {
     	this.devices[device.id] = device;
 
 	var topicName = this.getTopicName(device.id)
-
+	
+	//send node attributes
 	this.client.publish(topicName + '/$name', device.modelId);
+	this.client.publish(topicName + '/$type', device['@type'].toString());
+	this.client.publish(topicName + '/$properties', Array.from(device.properties.keys()).join(", "));
 
         var topicName = this.getTopicName(device.id);
 
         device.properties.forEach((property, propertyName) => {
-	    if(!property.readOnly) {
-	        property.getValue().then((value) => {
-		    var propertyValue = ""
-		    if(property.value != null) {
-		        propertyValue = property.value.toString();
-		    }
+	    property.getValue().then((value) => {
+		var propertyValue = ""
+		if(property.value != null) {
+		    propertyValue = property.value.toString();
+		}
+		
+		//property setter
+	        if(!property.readOnly) {
 		    this.client.subscribe(topicName + '/' + propertyName + '/set')
-            	    this.client.publish(topicName + '/' + propertyName, propertyValue);
-	        });
-	    }
+	        }
+		
+            	this.client.publish(topicName + '/' + propertyName, propertyValue);
+
+		//property attributes
+		this.client.publish(topicName + '/' + propertyName + '/$name', propertyName);
+		this.client.publish(topicName + '/' + propertyName + '/$datatype', property.type);
+		this.client.publish(topicName + '/' + propertyName + '/$settable', (!property.readOnly).toString());
+
+		if(property.hasOwnProperty('unit')) {
+		    this.client.publish(topicName + '/' + propertyName + '/$unit', property.unit)
+		}
+
+		//these properties are not part of homeiot spec
+                if(property.hasOwnProperty('minimum')) {
+                    this.client.publish(topicName + '/' + propertyName + '/$minimum', property.minimum.toString())
+                }
+		if(property.hasOwnProperty('maximum')) {
+		    this.client.publish(topicName + '/' + propertyName + '/$maximum', property.maximum.toString())
+		}
+	    });
         });
     }
     propertyChanged(property) {
@@ -90,4 +113,4 @@ class HomieEventListener {
     }
 };
 
-module.exports = EventListener;
+module.exports = HomieEventListener;

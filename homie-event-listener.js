@@ -94,10 +94,8 @@ class HomieEventListener {
         });
     }
     propertyChanged(property) {
-	if(!property.readOnly) {
-	    var topicName = this.getTopicName(property.device.id);
-	    this.client.publish(topicName + '/' + property.name, property.value.toString());
-	}
+	var topicName = this.getTopicName(property.device.id);
+	this.client.publish(topicName + '/' + property.name, property.value.toString());
     }
     getTopicName(deviceId) {
         return this.rootTopic + deviceId;

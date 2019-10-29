@@ -16,7 +16,7 @@ Most code was taken originally from https://github.com/mozilla-iot
 You need to have a Digi Xbee device
 
 Start service with
-> node zigbee-listener.js
+>  ./zigbee-listener.js --mqtt 192.168.1.9
 
 Listen to device changes
 > mosquitto_sub -h localhost -t "homie/+/+" -v

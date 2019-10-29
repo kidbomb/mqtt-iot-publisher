@@ -95,13 +95,14 @@ const optionsDefs = [
   {name: 'list', alias: 'l', type: Boolean},
   {name: 'sleep', type: Number},
   {name: 'port', type: String, defaultOption: true},
+  {name: 'mqtt', type: String}
 ];
 const options = commandLineArgs(optionsDefs);
 SerialProber.debug(options.debug);
 
 var config = {};
 
-var listener = new EventListener();
+var listener = new HomieEventListener(options.mqtt);
 
 if (options.list) {
   SerialProber.listAll().then(() => {

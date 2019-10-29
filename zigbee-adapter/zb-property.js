@@ -12,10 +12,10 @@
 
 const Color = require('color');
 const zclId = require('zcl-id');
-const Utils = require('./utils')
+const Utils = require('./lib/utils')
 
-const Deferred = require('./deferred')
-const Property = require('./property')
+const Deferred = require('./lib/deferred')
+const Property = require('./lib/property')
 
 const {
   ATTR_ID,

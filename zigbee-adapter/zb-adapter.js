@@ -17,8 +17,8 @@ const ZigbeeNode = require('./zb-node');
 const zdo = require('./zigbee-zdo');
 const zclId = require('zcl-id');
 const registerFamilies = require('./zb-families');
-const Utils = require('./utils')
-const Adapter = require('./adapter')
+const Utils = require('./lib/utils')
+const Adapter = require('./lib/adapter')
 
 const {
   ATTR_ID,

@@ -10,7 +10,7 @@
 'use strict';
 
 const zclId = require('zcl-id');
-const Utils = require('./utils')
+const Utils = require('./lib/utils')
 
 function addHexValues(dict) {
   for (const key in dict) {

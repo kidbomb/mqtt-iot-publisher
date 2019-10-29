@@ -14,7 +14,7 @@ const util = require('util');
 const zcl = require('zcl-packet');
 const zclId = require('zcl-id');
 const zdo = require('./zigbee-zdo');
-const Utils = require('./utils')
+const Utils = require('./lib/utils')
 
 const {
   PROFILE_ID,

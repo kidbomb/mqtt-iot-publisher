@@ -17,9 +17,9 @@ const zcl = require('zcl-packet');
 const zdo = require('./zigbee-zdo');
 const zigbeeClassifier = require('./zb-classifier');
 const ZigbeeFamily = require('./zb-family');
-const Utils = require('./utils')
-const Device = require('./device')
-const Event = require('./event')
+const Utils = require('./lib/utils')
+const Device = require('./lib/device')
+const Event = require('./lib/event')
 
 const {
   ATTR_ID,

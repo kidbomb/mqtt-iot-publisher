@@ -54,9 +54,9 @@ class HomieEventListener {
 	var topicName = this.getTopicName(device.id)
 	
 	//send node attributes
-	this.client.publish(topicName + '/$name', device.modelId);
-	this.client.publish(topicName + '/$type', device['@type'].toString());
-	this.client.publish(topicName + '/$properties', Array.from(device.properties.keys()).join(", "));
+	this.client.publish(topicName + '/$name', device.modelId, {'qos': 1, 'retain': true });
+	this.client.publish(topicName + '/$type', device['@type'].toString(), {'qos': 1, 'retain': true });
+	this.client.publish(topicName + '/$properties', Array.from(device.properties.keys()).join(", "), {'qos': 1, 'retain': true });
 
         var topicName = this.getTopicName(device.id);
 
@@ -72,30 +72,30 @@ class HomieEventListener {
 		    this.client.subscribe(topicName + '/' + propertyName + '/set')
 	        }
 		
-            	this.client.publish(topicName + '/' + propertyName, propertyValue);
+            	this.client.publish(topicName + '/' + propertyName, propertyValue, {'qos': 1, 'retain': true });
 
 		//property attributes
-		this.client.publish(topicName + '/' + propertyName + '/$name', propertyName);
-		this.client.publish(topicName + '/' + propertyName + '/$datatype', property.type);
-		this.client.publish(topicName + '/' + propertyName + '/$settable', (!property.readOnly).toString());
+		this.client.publish(topicName + '/' + propertyName + '/$name', propertyName, {'qos': 1, 'retain': true });
+		this.client.publish(topicName + '/' + propertyName + '/$datatype', property.type, {'qos': 1, 'retain': true });
+		this.client.publish(topicName + '/' + propertyName + '/$settable', (!property.readOnly).toString(), {'qos': 1, 'retain': true });
 
 		if(property.hasOwnProperty('unit')) {
-		    this.client.publish(topicName + '/' + propertyName + '/$unit', property.unit)
+		    this.client.publish(topicName + '/' + propertyName + '/$unit', property.unit, {'qos': 1, 'retain': true })
 		}
 
 		//these properties are not part of homeiot spec
                 if(property.hasOwnProperty('minimum')) {
-                    this.client.publish(topicName + '/' + propertyName + '/$minimum', property.minimum.toString())
+                    this.client.publish(topicName + '/' + propertyName + '/$minimum', property.minimum.toString(), {'qos': 1, 'retain': true })
                 }
 		if(property.hasOwnProperty('maximum')) {
-		    this.client.publish(topicName + '/' + propertyName + '/$maximum', property.maximum.toString())
+		    this.client.publish(topicName + '/' + propertyName + '/$maximum', property.maximum.toString(), {'qos': 1, 'retain': true })
 		}
 	    });
         });
     }
     propertyChanged(property) {
 	var topicName = this.getTopicName(property.device.id);
-	this.client.publish(topicName + '/' + property.name, property.value.toString());
+	this.client.publish(topicName + '/' + property.name, property.value.toString(), {'qos': 1, 'retain': true });
     }
     getTopicName(deviceId) {
         return this.rootTopic + deviceId;

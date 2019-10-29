@@ -1,0 +1,38 @@
+{
+  "name": "mqtt-iot-publisher",
+  "version": "0.0.1",
+  "description": "An MQTT publisher for IOT events",
+  "main": "zigbee-listener.js",
+  "dependencies": {
+    "ajv": "^6.10.2",
+    "buffer-builder": "^0.2.0",
+    "buffer-reader": "^0.1.0",
+    "clone-deep": "^4.0.1",
+    "color": "^3.1.2",
+    "command-line-args": "^5.1.1",
+    "mqtt": "^3.0.0",
+    "serialport": "^8.0.5",
+    "xbee-api": "^0.6.0",
+    "zcl-id": "^0.4.1-moziot-002",
+    "zcl-packet": "^0.2.5-moziot-005"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./zigbee-listener.js --mqtt server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kidbomb/mqtt-iot-publisher.git"
+  },
+  "keywords": [
+    "mqtt",
+    "iot",
+    "zigbee"
+  ],
+  "author": "Filipe Paz Rodrigues <kidbomb@gmail.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/kidbomb/mqtt-iot-publisher/issues"
+  },
+  "homepage": "https://github.com/kidbomb/mqtt-iot-publisher#readme"
+}

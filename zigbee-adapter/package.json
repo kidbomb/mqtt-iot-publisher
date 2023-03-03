@@ -23,7 +23,7 @@
     "command-line-args": "^5.1.1",
     "dissolve": "github:mozilla-iot/dissolve#moziot-changes",
     "dissolve-chunks": "github:mozilla-iot/dissolve-chunks#moziot-changes",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^0.5.6",
     "xbee-api": "^0.6.0",
     "zcl-id": "github:dhylands/zcl-id#moziot-changes",
     "zcl-packet": "github:dhylands/zcl-packet#moziot-changes"
